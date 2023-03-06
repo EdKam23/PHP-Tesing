@@ -186,15 +186,23 @@ class Maze
     }
     
 
-    function serializeThePath()
+    function storeThePath()
     {
+        $strNo = "> No path.";
         if ($this->minDist != PHP_INT_MAX/2)
         {
             $pathString = serialize($this->shortestPath);
+            file_put_contents('shortestPath.txt', $pathString . PHP_EOL, FILE_APPEND ); 
+            $pathString = file_get_contents('shortestPath.txt');
             print "<hr/> Object <b>\$shortestPath:</b>  <pre>";print_r($this->shortestPath); print "</pre><hr/>";
             print " - Serialized object  <b> \$shortestPath</b>   <pre>";print_r($pathString); print "</pre><hr/>";
             $backup_path = unserialize($pathString);
             print " - Unserialized object <b> \$shortestPath</b>   <pre>";print_r($backup_path); print "</pre><hr/>";
+        }
+        else 
+        {
+            file_put_contents('shortestPath.txt', $strNo . PHP_EOL, FILE_APPEND );  
+            $pathString = file_get_contents('shortestPath.txt');             
         }
            
     }

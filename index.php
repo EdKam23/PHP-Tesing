@@ -9,4 +9,4 @@ $tryToPass = new Maze(3, 2, 9, 1);
 
 $tryToPass->visualize();
 $tryToPass->shortPath();
-$tryToPass->serializeThePath();
+$tryToPass->storeThePath();
